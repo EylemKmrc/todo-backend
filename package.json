@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/EylemKmrc/todo-backend/issues"
   },
-  "homepage": "https://github.com/EylemKmrc/todo-backend#readme"
+  "homepage": "https://github.com/EylemKmrc/todo-backend#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
 }
