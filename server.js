@@ -1,7 +1,7 @@
 const express = require('express'); //importieren von express
 const routes = require('./routes');
-const mongoose = require('mongoose');
-require('dotenv').config();
+const mongoose = require('mongoose');   //lädt das mongoose Paket
+require('dotenv').config();                      // Lädt die Umgebungsvariablen aus der .env-Datei
 
 const app = express();
 const PORT = 3000;
@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/', routes);
 
 // connect to mongoDB
-mongoose.connect(process.env.DB_CONNECTION, { dbName: process.env.DATABASE });
+mongoose.connect(process.env.DB_CONNECTION, { dbName: process.env.DATABASE });  //durch process.env wird verbindung zu DB in .env hergestellt
 const db = mongoose.connection;
 db.on('error', err => {
     console.log(err);
