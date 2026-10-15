@@ -29,4 +29,15 @@ router.get('/categories', async (req, res) => {
     res.send(allCategories);
 })
 
+//POST-Anfrage zum erstellen einer Todo
+router.post('/todo', async (req, res ) => {
+    const newTodo = new Todo({
+        title: req.body.title,
+        category: req.body.category,
+        dueDate: req.body.dueDate
+    })
+    await newTodo.save();
+    res.send(newTodo);
+})
+
 module.exports = router;
