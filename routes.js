@@ -22,4 +22,11 @@ router.get('/todos/:id', async (req, res) => {
     }
     })
 
+//GET-Anfrage zum auslesen aller Categorien
+router.get('/categories', async (req, res) => {
+    const allCategories = Todo.schema.path('category').enumValues;
+    console.log(allCategories);
+    res.send(allCategories);
+})
+
 module.exports = router;
