@@ -52,4 +52,21 @@ router.delete('/todos/:id', async (req, res) => {
     }
 })
 
+//UPDATE-Anfrage zum aktualisieren der Daten für eine Todo
+router.patch('/todos/:id', async (req, res) => {
+    try {
+        const todo = await Todo.findOne({_id: req.params.id})
+
+        if (req.body.title) todo.title = req.body.title
+        if (req.body.category) todo.category = req.body.category
+        if (req.body.dueDate) todo.dueDate = req.body.dueDate
+
+        await Todo.updateOne ({ _id: req.params.id}, todo);
+        res.send(todo)
+    }catch {
+        res.status(404)
+        res.send({ error: "Todo does not exist!" })
+    }
+})
+
 module.exports = router;
