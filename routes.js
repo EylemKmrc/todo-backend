@@ -30,7 +30,7 @@ router.get('/categories', async (req, res) => {
 })
 
 //POST-Anfrage zum erstellen einer Todo
-router.post('/todo', async (req, res ) => {
+router.post('/todos', async (req, res ) => {
     const newTodo = new Todo({
         title: req.body.title,
         category: req.body.category,
@@ -41,7 +41,7 @@ router.post('/todo', async (req, res ) => {
 })
 
 //DELETE-Anfrage zum löschen einer Todo
-router.delete('/todo/:id', async (req, res) => {
+router.delete('/todos/:id', async (req, res) => {
     try {
         const result = await Todo.deleteOne({_id: req.params.id})
         res.status(204)
