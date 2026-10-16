@@ -40,4 +40,16 @@ router.post('/todo', async (req, res ) => {
     res.send(newTodo);
 })
 
+//DELETE-Anfrage zum löschen einer Todo
+router.delete('/todo/:id', async (req, res) => {
+    try {
+        const result = await Todo.deleteOne({_id: req.params.id})
+        res.status(204)
+        res.send()
+    } catch {
+        res.status(404)
+        res.send({error: "Todo does not exist!"})
+    }
+})
+
 module.exports = router;
