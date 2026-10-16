@@ -1,4 +1,5 @@
 const express = require('express'); //importieren von express
+const cors = require('cors');
 const routes = require('./routes');
 const mongoose = require('mongoose');   //lädt das mongoose Paket
 require('dotenv').config();                      // Lädt die Umgebungsvariablen aus der .env-Datei
@@ -7,6 +8,10 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+
+// enable cors for all requests
+app.use(cors());
+
 app.use('/', routes);
 
 // connect to mongoDB
