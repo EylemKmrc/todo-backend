@@ -43,12 +43,12 @@ router.post('/todos', async (req, res ) => {
 //DELETE-Anfrage zum löschen einer Todo
 router.delete('/todos/:id', async (req, res) => {
     try {
-        const result = await Todo.deleteOne({_id: req.params.id})
-        res.status(204)
-        res.send()
+        const deletedTodo = await Todo.findByIdAndDelete(req.params.id);
+        res.send(deletedTodo);
+
     } catch {
         res.status(404)
-        res.send({error: "Todo does not exist!"})
+        res.send({error: "Todo cannot be deleted!"})
     }
 })
 
